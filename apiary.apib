@@ -1,0 +1,65 @@
+FORMAT: 1A
+HOST: http://www.google.com
+
+# Cunae Gradebook
+Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+
+# Group Auth
+
+## API Auth [/api/auth/login]
+
+### Options [OPTIONS]
++ Response 200
+    + Headers
+    
+            Access-Control-Allow-Origin: *
+
+### Login [POST]
++ Request (application/json)
+
+        {
+            "email": "test@test.com",
+            "password":"somePassword"
+        }
++ Response 200 (application/json)
+
+        {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6InRlc3RAdGVzdC5jb20iLCJJZCI6MSwiZXhwIjoxNDAyMDM4OTkwfQ.U7dHH8x8np6XyZsL5OUjXr3yVYL_89d5mOEbqX6V6L0"
+        }
+
+## API Classes [/api/classes]
+
+### Options [OPTIONS]
++ Response 200
+    + Headers
+    
+            Access-Control-Allow-Origin: *
+
+### Get All [GET]
++ Response 200 (application/json)
+        [
+            {
+                "id": 0,
+                "teacher": "Dollie Calderon",
+                "gradeLevel": "First Grade",
+                "className": "Algebra One"
+            },
+            {
+                "id": 1,
+                "teacher": "Kristine Vinson",
+                "gradeLevel": "First Grade",
+                "className": "Science Two"
+            },
+            {
+                "id": 2,
+                "teacher": "Rivers Ewing",
+                "gradeLevel": "First Grade",
+                "className": "Art One"
+            },
+            {
+                "id": 3,
+                "teacher": "Cassandra Guthrie",
+                "gradeLevel": "First Grade",
+                "className": "Social Studies One"
+            }
+        ]
