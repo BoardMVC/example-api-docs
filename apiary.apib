@@ -153,20 +153,40 @@ that action, a [sign in][a-sign-in] modal should be shown, and then the action i
 * clicking [reply][a-comment-box]
 * [voting][a-vote]
 
-[a-comment-box]: #comment-form "Comment Form"
-[a-summary]: #summary "Summary"
-[a-post]: #posting "Posting"
-[a-sign-up]: #sign-up "Sign up"
-[a-sign-in]: #sign-in "Sign in"
-[a-item]: #item-page "Item Page"
-[a-vote]: #vote-button "Vote Button"
-[a-profile]: #profile "Profile"
-[a-auth]: #authentication "Authentication"
 
-# API
+
 # Group Auth
 Authentication API
 
 
 # Group Post
 Post API
+
+# Group User Profile
+
+## View Profile[/profile{username}]
+Required attributes: 
+ 
+- `id`          Automatically assigned
+- `name`
+- `description`
+
+Optional attributes:
+- `parent`      ID of folder that is the parent. Set to 0 if no parent
+- `meta`        A catch-all attribute to add custom features
+ 
++ Parameters
+    + id (required, int) ... Unique folder ID in the form of an integer
+ 
++ Model (application/hal+json)
+ 
+    + Body
+ 
+            {
+                "id": 1,
+                "name": "Health",
+                "description": "This represents projects that are related to health"
+                "parent": 0,
+                "meta": "NULL"
+            }
+
