@@ -1,65 +1,47 @@
 FORMAT: 1A
 HOST: http://www.google.com
 
-# Cunae Gradebook
+# BoardMVC
 Notes API is a *short texts saving* service similar to its physical paper presence on your table.
 
-# Group Auth
+# Group Notes
+Notes related resources of the **Notes API**
 
-## API Auth [/api/auth/login]
+## Notes Collection [/notes]
+### List all Notes [GET]
++ Response 200 (application/json)
 
-### Options [OPTIONS]
-+ Response 200
-    + Headers
-    
-            Access-Control-Allow-Origin: *
+        [{
+          "id": 1, "title": "Jogging in park"
+        }, {
+          "id": 2, "title": "Pick-up posters from post-office"
+        }]
 
-### Login [POST]
+### Create a Note [POST]
 + Request (application/json)
 
-        {
-            "email": "test@test.com",
-            "password":"somePassword"
-        }
+        { "title": "Buy cheese and bread for breakfast." }
+
++ Response 201 (application/json)
+
+        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+
+## Note [/notes/{id}]
+A single Note object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+
+### Retrieve a Note [GET]
 + Response 200 (application/json)
 
-        {
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6InRlc3RAdGVzdC5jb20iLCJJZCI6MSwiZXhwIjoxNDAyMDM4OTkwfQ.U7dHH8x8np6XyZsL5OUjXr3yVYL_89d5mOEbqX6V6L0"
-        }
+    + Header
 
-## API Classes [/api/classes]
+            X-My-Header: The Value
 
-### Options [OPTIONS]
-+ Response 200
-    + Headers
-    
-            Access-Control-Allow-Origin: *
+    + Body
 
-### Get All [GET]
-+ Response 200 (application/json)
-        [
-            {
-                "id": 0,
-                "teacher": "Dollie Calderon",
-                "gradeLevel": "First Grade",
-                "className": "Algebra One"
-            },
-            {
-                "id": 1,
-                "teacher": "Kristine Vinson",
-                "gradeLevel": "First Grade",
-                "className": "Science Two"
-            },
-            {
-                "id": 2,
-                "teacher": "Rivers Ewing",
-                "gradeLevel": "First Grade",
-                "className": "Art One"
-            },
-            {
-                "id": 3,
-                "teacher": "Cassandra Guthrie",
-                "gradeLevel": "First Grade",
-                "className": "Social Studies One"
-            }
-        ]
+            { "id": 2, "title": "Pick-up posters from post-office" }
+
+### Remove a Note [DELETE]
++ Response 204
